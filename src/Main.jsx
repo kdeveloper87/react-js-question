@@ -45,7 +45,7 @@ const Main = () => {
     const { dataset: { order } } = e.target;
     setIndex( QUESTION );
     setOrder( order );
-    setTitle(questions[ level ].name);
+    setTitle(questions[ level ][order].name);
   };
 
   const onClickReset = () => {
@@ -125,24 +125,5 @@ const QuestionListContainer = ({ questionList = [], onClick, scores = {} }) => {
     </div>
   );
 };
-
-// const QuestionContainer = () => {
-//   return (
-//     <div className="question_container">
-//       <div className="question">
-//         1/1 다음 result 값은?
-//       </div>
-//       <div className="code">
-//         <pre><code className="javascript">const aa = x => x * 3;</code></pre>
-//       </div>
-//       <div className="answers">
-//         <div className="answer  right">111</div>
-//         <div className="answer">222</div>
-//         <div className="answer wrong">333</div>
-//         <div className="answer">444</div>
-//       </div>
-//     </div>
-//   );
-// };
 
 export default Main;
