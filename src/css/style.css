@@ -1,13 +1,14 @@
 body{
-    background: rgba(54, 255, 91, 0.33);
+    background: rgb(25, 32, 36);
 }
 .container{
     max-width: 500px;
     margin: 0 auto;
+    border-radius: 5px;
 }
 
 .header{
-    background-color: rgb(47, 125, 50);
+    background-color: rgb(61, 78, 85);
     padding: 10px;
 }
 
@@ -25,7 +26,7 @@ body{
 
 .card{
     position: relative;
-    height: 150px;
+    min-height: 150px;
     margin: 10px;
     padding: 20px;
     background: white;
@@ -42,7 +43,7 @@ body{
     bottom: 10px;
     border-style: none;
     border-radius: 10px;
-    background-color: rgb(47, 125, 50);
+    background-color: rgb(38, 50, 56);
     color: white;
     cursor: pointer;
 }
@@ -66,39 +67,43 @@ body{
 
 /*문제*/
 .question_container{
-    background: white;
+    background-color: rgba(255, 255, 255, 0.46);
+    color: black;
 }
 
 .question{
     padding: 10px;
 }
 .answer{
+    min-height: 50px;
+    margin: 5px;
     padding: 10px;
     border: 1px solid lightgray;
     border-radius: 5px;
     box-sizing: border-box;
+    background: white;
 }
 
 .main_text{
     padding: 10px;
+    line-height: 1.5rem;
 }
 
 
 .next{
     position: relative;
-    height: 50px;
-    background: rgba(54, 255, 91, 0.33);
+    height: 60px;
 }
 
 .next-btn{
     position: absolute;
-    right: 0;
+    right: 10px;
     top: 5px;
     width: 100px;
-    height: 30px;
+    height: 50px;
     border-style: none;
     border-radius: 10px;
-    background-color: rgb(47, 125, 50);
+    background-color: rgb(38, 50, 56);
     color: white;
     cursor: pointer;
 }

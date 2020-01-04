@@ -101,7 +101,8 @@ const LevelContainer = ({ onClick }) => {
       <div className="card">
         <h3>1단계 문제</h3>
         <div className="main_text">
-          <p>자바스크립트 1단계 문제 - 문제를 보고 맞는 답을 골라주세요.</p>
+          <p>자바스크립트 1단계 문제 <br/>문제를 보고 맞는 답을 골라주세요.</p>
+
         </div>
         <button className="btn" onClick={ onClick } data-level={ 'advanced' }>START</button>
       </div>
