@@ -59,8 +59,9 @@ const QuestionContainer = ({ question, onClickReset, updateScore }) => {
 
     if ( lastIndex < curIndex + 1 ){
       if ( matchCount.current === data.length ){
-        alert( `만점!!` );
+        return alert( `만점!!` );
       }
+
       alert( `${ matchCount.current }개 맞았습니다!` );
       setBtnText( '돌아가기' );
       return;
