@@ -23,7 +23,7 @@ module.exports = {
             targets: {
               browsers: ['>1% in KR','last 2 chrome versions'],
             },
-            debug:true,
+            debug:false,
           }],
           '@babel/preset-react',
         ],
@@ -38,7 +38,7 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.LoaderOptionsPlugin({ debug: true } ),
+    new webpack.LoaderOptionsPlugin({ debug: false } ),
   ],
 
   output: {

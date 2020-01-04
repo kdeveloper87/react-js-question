@@ -12,6 +12,8 @@
   "dependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
     "styled-components": "^4.4.1"
   },
   "devDependencies": {
@@ -25,6 +27,7 @@
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1",
     "css-loader": "^3.3.2",
-    "style-loader": "^1.0.1"
+    "style-loader": "^1.0.1",
+    "highlight.js": "^9.17.1"
   }
 }
