@@ -14,7 +14,7 @@ const Main = () => {
   const [level, setLevel] = useState( '' );
   const [order, setOrder] = useState( '' );
   const [title, setTitle] = useState( '자바스크립트 문제 은행' );
-  const scores = useRef( new Store( 'scores' ) );
+  const scores = useRef( new Store( 'quizScores' ) );
 
   const getScore = (name) => {
     return scores.current.getLocalStorage( name );
@@ -26,13 +26,13 @@ const Main = () => {
 
   const updateScore = (score) => {
 
-    const scores = getScore( 'scores' );
+    const scores = getScore( 'quizScores' );
     if ( !scores[ level ] ){
       scores[ level ] = [];
     }
     scores[ level ][ order ] = score;
 
-    setScore( 'scores', scores );
+    setScore( 'quizScores', scores );
   };
 
   const onClickStart = (e) => {
@@ -61,7 +61,7 @@ const Main = () => {
       <Contents index={ index }>
         <LevelContainer onClick={ onClickStart }/>
         <QuestionListContainer questionList={ questions[ level ] } onClick={ onClickLevelTestStart }
-                               scores={ getScore( 'scores' )[ level ] }/>
+                               quizScores={ getScore( 'quizScores' )[ level ] }/>
         <QuestionContainer question={ questions[ level ] && questions[ level ][ order ] }
                            onClickReset={ onClickReset } updateScore={ updateScore }/>
       </Contents>
