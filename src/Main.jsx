@@ -13,11 +13,8 @@ const Main = () => {
   const [index, setIndex] = useState( MAIN );
   const [level, setLevel] = useState( '' );
   const [order, setOrder] = useState( '' );
+  const [title, setTitle] = useState( '자바스크립트 문제 은행' );
   const scores = useRef( new Store( 'scores' ) );
-
-  // useEffect( () => {
-  //   console.log( scores.current );
-  // }, [scores] );
 
   const getScore = (name) => {
     return scores.current.getLocalStorage( name );
@@ -48,18 +45,19 @@ const Main = () => {
     const { dataset: { order } } = e.target;
     setIndex( QUESTION );
     setOrder( order );
+    setTitle(questions[ level ].name);
   };
 
   const onClickReset = () => {
     setIndex( QUESTION_LIST );
     setLevel( level );
+    setTitle('자바스크립트 문제 은행');
   };
 
-  console.log( getScore( 'scores' ) );
 
   return (
     <Container>
-      <Header/>
+      <Header title={ title }/>
       <Contents index={ index }>
         <LevelContainer onClick={ onClickStart }/>
         <QuestionListContainer questionList={ questions[ level ] } onClick={ onClickLevelTestStart }
@@ -87,11 +85,11 @@ const Contents = ({ index, children }) => {
   } );
 };
 
-const Header = () => {
+const Header = ({ title }) => {
   return (
     <div className="header">
       <h2 className="title">
-        자바스크립트 퀴즈
+        { title }
       </h2>
     </div>
   );
@@ -101,11 +99,11 @@ const LevelContainer = ({ onClick }) => {
   return (
     <div className="contents">
       <div className="card">
-        <h3>beginner</h3>
+        <h3>1단계 문제</h3>
         <div className="main_text">
-          <p>자바스크립트 문제자바스크립트 문제자바스크립트 문제자바스크립트 문제</p>
+          <p>자바스크립트 1단계 문제 - 문제를 보고 맞는 답을 골라주세요.</p>
         </div>
-        <button className="btn" onClick={ onClick } data-level={ 'beginner' }>START</button>
+        <button className="btn" onClick={ onClick } data-level={ 'advanced' }>START</button>
       </div>
     </div>
   );

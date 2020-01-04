@@ -2,7 +2,6 @@ const path = require( 'path' );
 const webpack = require('webpack');
 
 module.exports = {
-  name: 'react-setting',
   mode: 'development',
   devtool: 'source-map',
   resolve: {

@@ -79,6 +79,10 @@ body{
     box-sizing: border-box;
 }
 
+.main_text{
+    padding: 10px;
+}
+
 
 .next{
     position: relative;
