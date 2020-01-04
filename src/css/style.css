@@ -49,12 +49,11 @@ body{
 
 
 /*리스트*/
-.container_list{
+.items{
     display: grid;
     grid-template-columns: repeat(2,auto);
     grid-gap: 1rem;
     padding: 5px;
-
 }
 
 .item{
@@ -80,7 +79,27 @@ body{
     box-sizing: border-box;
 }
 
-.right{
+
+.next{
+    position: relative;
+    height: 50px;
+    background: rgba(54, 255, 91, 0.33);
+}
+
+.next-btn{
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 100px;
+    height: 30px;
+    border-style: none;
+    border-radius: 10px;
+    background-color: rgb(47, 125, 50);
+    color: white;
+    cursor: pointer;
+}
+
+.correct{
     background: yellowgreen;
 }
 

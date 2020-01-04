@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from 'react' ;
+import React, { useState, useEffect,useRef } from 'react' ;
 import './css/reset.css';
 import './css/style.css';
 import 'highlight.js/styles/atom-one-dark.css'
 import hljs from 'highlight.js/lib/highlight';
 import javascript from 'highlight.js/lib/languages/javascript';
 
-const QuestionContainer = ({ question }) => {
+const QuestionContainer = ({ question ,onClickReset,updateScore}) => {
   const { data = [] } = question;
   const [curIndex, setCurIndex] = useState( 0 );
   const [curQuestion, setCurQuestion] = useState( data[ curIndex ] );
   const [isSelect, setIsSelect] = useState( false );
+  const [btnText, setBtnText] = useState( '다음' );
+  const lastIndex = data.length-1;
+  const matchCount = useRef(0);
 
 
   useEffect( () => {
@@ -21,36 +24,56 @@ const QuestionContainer = ({ question }) => {
 
   const onClick = (e) => {
     const { dataset: { select } } = e.target;
-    if(!select){
+    if ( !select ){
       return;
     }
 
     setIsSelect( true );
     if ( +curQuestion.correct !== +select ){
       setCurQuestion( (curQuestion) => {
-        debugger
-        curQuestion.example[ select ].correct = 'wrong';
-        return curQuestion;
+        const nextExample = [...curQuestion.example];
+        nextExample[ select ].correct = 'wrong';
+        return {
+          ...curQuestion,
+          example: nextExample,
+        }
       } );
+    }else{
+      matchCount.current = matchCount.current +1
     }
   };
 
-  const onClickNext = () => {
-    setCurIndex(curIndex+1);
-    debugger
-    console.log( data );
-    setCurQuestion(data[curIndex+1]);
+  const onClickNext = (e) => {
+    const{dataset:{reset}} = e.target;
+
+    if(reset==='돌아가기'){
+
+      updateScore(matchCount.current /data.length * 100);
+      onClickReset();
+      return;
+    }
+
+    if(lastIndex < curIndex + 1){
+      alert(`${matchCount.current}개 맞음`);
+      setBtnText('돌아가기');
+      return;
+    }
+
+    setIsSelect(false);
+    setCurIndex( curIndex + 1 );
+    setCurQuestion( data[ curIndex + 1 ] );
   };
 
+  console.log( curQuestion );
 
   return (
     <div className="question_container">
-      <Question data={ curQuestion } onClick={ onClick } isSelect={ isSelect } onClickNext={onClickNext}/>
+      <Question data={ curQuestion } onClick={ onClick } isSelect={ isSelect } onClickNext={ onClickNext } btnText={btnText}/>
     </div>
   );
 };
 
-const Question = ({ data, onClick, isSelect ,onClickNext}) => {
+const Question = ({ data, onClick, isSelect, onClickNext,btnText }) => {
   const { question, code, example } = data;
 
   return (
@@ -61,17 +84,17 @@ const Question = ({ data, onClick, isSelect ,onClickNext}) => {
       <div className="code">
         <pre><code className="javascript">{ code }</code></pre>
       </div>
-      <div className="answers" onClick={ onClick }>
+      <div className="answers">
         { example.map( (item) => {
           return (
             <div className={ `answer ${ isSelect ? item.correct : '' }` } data-select={ item.key }
-                 key={ item.key }>{ item.title }</div>
+                 key={ item.key } onClick={ onClick }>{ item.title }</div>
           );
         } ) }
 
         { isSelect && (
           <div className="next">
-            <button className="next-btn" onClick={onClickNext}>다음</button>
+            <button className="next-btn" onClick={ onClickNext } data-reset={btnText}>{btnText}</button>
           </div>
         ) }
       </div>

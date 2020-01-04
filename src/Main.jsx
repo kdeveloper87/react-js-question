@@ -1,8 +1,9 @@
-import React, { useState } from 'react' ;
+import React, { useState, useEffect, useRef } from 'react' ;
 import './css/reset.css';
 import './css/style.css';
 import questions from "./data/questions";
 import QuestionContainer from "./QuestionContainer";
+import Store from "./Store";
 
 const MAIN = 0;
 const QUESTION_LIST = 1;
@@ -12,6 +13,30 @@ const Main = () => {
   const [index, setIndex] = useState( MAIN );
   const [level, setLevel] = useState( '' );
   const [order, setOrder] = useState( '' );
+  const scores = useRef( new Store( 'scores' ) );
+
+  // useEffect( () => {
+  //   console.log( scores.current );
+  // }, [scores] );
+
+  const getScore = (name) => {
+    return scores.current.getLocalStorage( name );
+  };
+
+  const setScore = (name, item) => {
+    scores.current.setLocalStorage( name, item );
+  };
+
+  const updateScore = (score) => {
+
+    const scores = getScore( 'scores' );
+    if ( !scores[ level ] ){
+      scores[ level ] = [];
+    }
+    scores[ level ][ order ] = score;
+
+    setScore( 'scores', scores );
+  };
 
   const onClickStart = (e) => {
     const { dataset: { level } } = e.target;
@@ -25,13 +50,22 @@ const Main = () => {
     setOrder( order );
   };
 
+  const onClickReset = () => {
+    setIndex( QUESTION_LIST );
+    setLevel( level );
+  };
+
+  console.log( getScore( 'scores' ) );
+
   return (
     <Container>
       <Header/>
       <Contents index={ index }>
         <LevelContainer onClick={ onClickStart }/>
-        <QuestionListContainer questionList={ questions[ level ] } onClick={ onClickLevelTestStart }/>
-        <QuestionContainer question={ questions[ level ] && questions[ level ][ order ] }/>
+        <QuestionListContainer questionList={ questions[ level ] } onClick={ onClickLevelTestStart }
+                               scores={ getScore( 'scores' )[ level ] }/>
+        <QuestionContainer question={ questions[ level ] && questions[ level ][ order ] }
+                           onClickReset={ onClickReset } updateScore={ updateScore }/>
       </Contents>
     </Container>
   );
@@ -71,20 +105,21 @@ const LevelContainer = ({ onClick }) => {
         <div className="main_text">
           <p>자바스크립트 문제자바스크립트 문제자바스크립트 문제자바스크립트 문제</p>
         </div>
-        <button className="btn" onClick={ onClick } data-level={ 'beginner' }>Start</button>
+        <button className="btn" onClick={ onClick } data-level={ 'beginner' }>START</button>
       </div>
     </div>
   );
 };
 
-const QuestionListContainer = ({ questionList = [], onClick, score = 0 }) => {
+const QuestionListContainer = ({ questionList = [], onClick, scores = {} }) => {
+  console.log( scores );
   return (
     <div className="items">
       { questionList.map( (item, index) => {
         return (
           <div className="item" key={ item.name }>
             <h3>{ item.name }</h3>
-            <p>Score : { item.score }%</p>
+            <p>Score : { scores[ index ] ? scores[ index ] : 0 }점</p>
             <button className="btn" onClick={ onClick } data-order={ index }>START</button>
           </div>
         );
