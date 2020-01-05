@@ -49,27 +49,33 @@ const QuestionContainer = ({ question, onClickReset, updateScore }) => {
 
   const onClickNext = (e) => {
     const { dataset: { reset } } = e.target;
+    const nextIndex = curIndex + 1;
 
-    if ( reset === '돌아가기' ){
+    // if ( reset === '돌아가기' ){
+    //
+    //   updateScore( matchCount.current / data.length * 100 );
+    //   onClickReset();
+    //   return;
+    // }
 
+    if ( lastIndex === nextIndex ){
+      setBtnText( '채점하기' )
+    }
+
+    if ( lastIndex < curIndex + 1 ){
+      if ( matchCount.current === data.length ){
+        alert( `만점!!` );
+      } else {
+        alert( `${ lastIndex + 1 }개 중 ${ matchCount.current }개 맞았습니다!` );
+      }
       updateScore( matchCount.current / data.length * 100 );
       onClickReset();
       return;
     }
 
-    if ( lastIndex < curIndex + 1 ){
-      if ( matchCount.current === data.length ){
-        return alert( `만점!!` );
-      }
-
-      alert( `${ matchCount.current }개 맞았습니다!` );
-      setBtnText( '돌아가기' );
-      return;
-    }
-
     setIsSelect( false );
-    setCurIndex( curIndex + 1 );
-    setCurQuestion( data[ curIndex + 1 ] );
+    setCurIndex( nextIndex );
+    setCurQuestion( data[ nextIndex ] );
   };
 
   return (
@@ -99,9 +105,10 @@ const Question = ({ data, onClick, isSelect, onClickNext, btnText }) => {
           );
         } ) }
 
-          <div className="next">
-            { isSelect && <button className="next-btn" onClick={ onClickNext } data-reset={ btnText }>{ btnText }</button>}
-          </div>
+        <div className="next">
+          { isSelect &&
+          <button className="next-btn" onClick={ onClickNext } data-reset={ btnText }>{ btnText }</button> }
+        </div>
       </div>
     </>
   );
