@@ -10,7 +10,7 @@ const QuestionContainer = ({ question, onClickReset, updateScore }) => {
   const [curIndex, setCurIndex] = useState( 0 );
   const [curQuestion, setCurQuestion] = useState( data[ curIndex ] );
   const [isSelect, setIsSelect] = useState( false );
-  const [btnText, setBtnText] = useState( '다음' );
+  const [btnText, setBtnText] = useState( '다음문제' );
   const lastIndex = data.length - 1;
   const matchCount = useRef( 0 );
 

@@ -104,7 +104,7 @@ const LevelContainer = ({ onClick }) => {
           <p>자바스크립트 1단계 문제 <br/>문제를 보고 맞는 답을 골라주세요.</p>
 
         </div>
-        <button className="btn" onClick={ onClick } data-level={ 'advanced' }>START</button>
+        <button className="btn" onClick={ onClick } data-level={ 'advanced' }>시작</button>
       </div>
     </div>
   );
@@ -118,7 +118,7 @@ const QuestionListContainer = ({ questionList = [], onClick, quizScores = {} }) 
           <div className="item" key={ item.name }>
             <h3>{ item.name }</h3>
             <p>점수 : { quizScores[ index ] ? quizScores[ index ] : 0 }점</p>
-            <button className="btn" onClick={ onClick } data-order={ index }>START</button>
+            <button className="btn" onClick={ onClick } data-order={ index }>시작</button>
           </div>
         );
       } ) }
