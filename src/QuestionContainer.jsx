@@ -99,11 +99,9 @@ const Question = ({ data, onClick, isSelect, onClickNext, btnText }) => {
           );
         } ) }
 
-        { isSelect && (
           <div className="next">
-            <button className="next-btn" onClick={ onClickNext } data-reset={ btnText }>{ btnText }</button>
+            { isSelect && <button className="next-btn" onClick={ onClickNext } data-reset={ btnText }>{ btnText }</button>}
           </div>
-        ) }
       </div>
     </>
   );
