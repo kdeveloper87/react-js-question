@@ -72,15 +72,14 @@ body{
 
 .question{
     padding: 10px;
+    background: white;
 }
 
 
 .answer{
     min-height: 50px;
-    margin: 5px;
+    margin-bottom: 2px;
     padding: 10px;
-    border: 1px solid lightgray;
-    border-radius: 5px;
     box-sizing: border-box;
     background: white;
 }

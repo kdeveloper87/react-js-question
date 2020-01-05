@@ -86,7 +86,7 @@ const Question = ({ data, onClick, isSelect, onClickNext, btnText }) => {
   return (
     <>
       <div className="question">
-        { question }
+        💻 { question }
       </div>
       <div className="code">
         <pre><code className="javascript">{ code }</code></pre>
