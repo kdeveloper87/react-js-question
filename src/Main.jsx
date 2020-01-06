@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react' ;
+import React, { useState, useRef } from 'react' ;
 import './css/reset.css';
 import './css/style.css';
 import questions from "./data/questions";
@@ -57,6 +57,10 @@ const Main = () => {
     setTitle( TITLE );
   };
 
+  const onClickMain = () => {
+    setIndex( MAIN );
+  };
+
 
   return (
     <Container>
@@ -64,7 +68,7 @@ const Main = () => {
       <Contents index={ index }>
         <LevelContainer onClick={ onClickStart }/>
         <QuestionListContainer questionList={ questions[ level ] } onClick={ onClickLevelTestStart }
-                               quizScores={ getScore( 'quizScores' )[ level ] }/>
+                               quizScores={ getScore( 'quizScores' )[ level ] } onClickMain={onClickMain}/>
         <QuestionContainer question={ questions[ level ] && questions[ level ][ order ] }
                            onClickReset={ onClickReset } updateScore={ updateScore }/>
       </Contents>
