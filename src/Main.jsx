@@ -31,6 +31,12 @@ const Main = () => {
 
   useEffect( () => {
     const scores = getScore( LOCAL_STORAGE_KEY );
+
+    if( level && !scores[ level ] ) {
+      scores[ level ] = [];
+      setScore( LOCAL_STORAGE_KEY, scores );
+    }
+
     setScores( scores[ level ] );
   }, [ level ] );
 
