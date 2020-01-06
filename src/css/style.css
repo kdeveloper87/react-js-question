@@ -46,6 +46,16 @@ body{
     cursor: pointer;
 }
 
+.back{
+    position: relative;
+}
+
+.btn-back{
+    top: 10px;
+    right: 0;
+    margin: 0 auto;
+}
+
 
 /*리스트*/
 .items{
