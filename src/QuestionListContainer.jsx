@@ -16,7 +16,7 @@ const QuestionListContainer = ({ questionList = [], onClick, quizScores = {}, on
         } ) }
       </div>
       <div className="back">
-        <button className="btn btn-back" onClick={ onClickMain   }>처음으로</button>
+        <button className="btn btn-back" onClick={ onClickMain }>처음으로</button>
       </div>
 
     </>
