@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react' ;
+import React, { useState, useEffect, useRef } from 'react' ;
 import './css/reset.css';
 import './css/style.css';
 import questions from "./data/questions";
@@ -11,31 +11,43 @@ const MAIN = 0;
 const QUESTION_LIST = 1;
 const QUESTION = 2;
 const TITLE = '자바스크립트 문제 은행';
+const LOCAL_STORAGE_KEY = 'quizScores';
 
 const Main = () => {
   const [ index, setIndex ] = useState( MAIN );
   const [ level, setLevel ] = useState( '' );
-  const [ order, setOrder ] = useState( '' );
+  const [ order, setOrder ] = useState( null );
   const [ title, setTitle ] = useState( TITLE );
-  const scores = useRef( new Store( 'quizScores' ) );
+  const scoresLocalStorage = useRef( new Store( LOCAL_STORAGE_KEY ) );
+  const [ scores, setScores ] = useState( [] );
 
   const getScore = (name) => {
-    return scores.current.getLocalStorage( name );
+    return scoresLocalStorage.current.getLocalStorage( name );
   };
 
   const setScore = (name, item) => {
-    scores.current.setLocalStorage( name, item );
+    scoresLocalStorage.current.setLocalStorage( name, item );
   };
 
-  const updateScore = (score) => {
+  useEffect( () => {
+    const scores = getScore( LOCAL_STORAGE_KEY );
+    setScores( scores[ level ] );
+  }, [ level ] );
 
-    const scores = getScore( 'quizScores' );
+  const updateScore = (score) => {
+    const scores = getScore( LOCAL_STORAGE_KEY );
     if( !scores[ level ] ) {
       scores[ level ] = [];
     }
+
     scores[ level ][ order ] = score;
 
-    setScore( 'quizScores', scores );
+    if( order === null ) {
+      scores[ level ] = [];
+    }
+
+    setScore( LOCAL_STORAGE_KEY, scores );
+    setScores( scores[ level ] );
   };
 
   const onClickStart = (e) => {
@@ -55,20 +67,25 @@ const Main = () => {
     setIndex( QUESTION_LIST );
     setLevel( level );
     setTitle( TITLE );
+    setOrder( null );
   };
 
   const onClickMain = () => {
     setIndex( MAIN );
   };
 
+  const onClickScoreReset = () => {
+    updateScore( 0 );
+  };
+
 
   return (
     <Container>
-      <Header title={ title }/>
+      <Header title={ title } index={ index } onClickScoreReset={ onClickScoreReset }/>
       <Contents index={ index }>
         <LevelContainer onClick={ onClickStart }/>
         <QuestionListContainer questionList={ questions[ level ] } onClick={ onClickLevelTestStart }
-                               quizScores={ getScore( 'quizScores' )[ level ] } onClickMain={onClickMain}/>
+                               quizScores={ scores } onClickMain={ onClickMain }/>
         <QuestionContainer question={ questions[ level ] && questions[ level ][ order ] }
                            onClickReset={ onClickReset } updateScore={ updateScore }/>
       </Contents>
@@ -92,12 +109,13 @@ const Contents = ({ index, children }) => {
   } );
 };
 
-const Header = ({ title }) => {
+const Header = ({ title, index, onClickScoreReset }) => {
   return (
     <div className="header">
       <h2 className="title">
         { title }
       </h2>
+      { index === QUESTION_LIST && ( <button className="btn btn-reset" onClick={ onClickScoreReset }>점수 초기화</button> ) }
     </div>
   );
 };
