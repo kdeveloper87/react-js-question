@@ -78,7 +78,6 @@ const Main = () => {
     updateScore( 0 );
   };
 
-
   return (
     <Container>
       <Header title={ title } index={ index } onClickScoreReset={ onClickScoreReset }/>

@@ -7,10 +7,10 @@ import javascript from 'highlight.js/lib/languages/javascript';
 
 const QuestionContainer = ({ question, onClickReset, updateScore }) => {
   const { data = [] } = question;
-  const [curIndex, setCurIndex] = useState( 0 );
-  const [curQuestion, setCurQuestion] = useState( data[ curIndex ] );
-  const [isSelect, setIsSelect] = useState( false );
-  const [btnText, setBtnText] = useState( '다음문제' );
+  const [ curIndex, setCurIndex ] = useState( 0 );
+  const [ curQuestion, setCurQuestion ] = useState( data[ curIndex ] );
+  const [ isSelect, setIsSelect ] = useState( false );
+  const [ btnText, setBtnText ] = useState( '다음문제' );
   const lastIndex = data.length - 1;
   const matchCount = useRef( 0 );
 
@@ -20,18 +20,18 @@ const QuestionContainer = ({ question, onClickReset, updateScore }) => {
     document.querySelectorAll( 'pre code' ).forEach( (block) => {
       hljs.highlightBlock( block );
     } );
-  }, [curQuestion] );
+  }, [ curQuestion ] );
 
   const onClick = (e) => {
     const { dataset: { select } } = e.target;
-    if ( !select ){
+    if( !select ) {
       return;
     }
 
     setIsSelect( true );
-    if ( +curQuestion.correct !== +select ){
+    if( +curQuestion.correct !== +select ) {
       setCurQuestion( (curQuestion) => {
-        const nextExample = [...curQuestion.example];
+        const nextExample = [ ...curQuestion.example ];
         nextExample[ select ] = {
           ...nextExample[ select ]
         };
@@ -58,12 +58,12 @@ const QuestionContainer = ({ question, onClickReset, updateScore }) => {
     //   return;
     // }
 
-    if ( lastIndex === nextIndex ){
+    if( lastIndex === nextIndex ) {
       setBtnText( '채점하기' )
     }
 
-    if ( lastIndex < curIndex + 1 ){
-      if ( matchCount.current === data.length ){
+    if( lastIndex < curIndex + 1 ) {
+      if( matchCount.current === data.length ) {
         alert( `만점!!` );
       } else {
         alert( `${ lastIndex + 1 }개 중 ${ matchCount.current }개 맞았습니다!` );
@@ -81,18 +81,17 @@ const QuestionContainer = ({ question, onClickReset, updateScore }) => {
   return (
     <div className="question_container">
       <Question data={ curQuestion } onClick={ onClick } isSelect={ isSelect } onClickNext={ onClickNext }
-                btnText={ btnText }/>
+                btnText={ btnText } lastIndex={ lastIndex } curIndex={ curIndex }/>
     </div>
   );
 };
 
-const Question = ({ data, onClick, isSelect, onClickNext, btnText }) => {
+const Question = ({ data, onClick, isSelect, onClickNext, btnText, lastIndex, curIndex }) => {
   const { question, code, example } = data;
-
   return (
     <>
       <div className="question">
-        💻 { question }
+        💻 { `${ curIndex+1 }/${ lastIndex + 1 }. ${ question }` }
       </div>
       <div className="code">
         <pre><code className="javascript">{ code }</code></pre>
