@@ -59,7 +59,7 @@ const QuestionContainer = ({ question, onClickReset, updateScore }) => {
     // }
 
     if( lastIndex === nextIndex ) {
-      setBtnText( '채점하기' )
+      setBtnText( '채점하기' );
     }
 
     if( lastIndex < curIndex + 1 ) {
@@ -91,7 +91,7 @@ const Question = ({ data, onClick, isSelect, onClickNext, btnText, lastIndex, cu
   return (
     <>
       <div className="question">
-        💻 { `${ curIndex+1 }/${ lastIndex + 1 }. ${ question }` }
+        💻 { `${ curIndex + 1 }/${ lastIndex + 1 }. ${ question }` }
       </div>
       <div className="code">
         <pre><code className="javascript">{ code }</code></pre>
