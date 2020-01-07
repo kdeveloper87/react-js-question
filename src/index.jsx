@@ -8,3 +8,8 @@ const Hot = hot( App );
 
 ReactDom.render( <Hot/>, document.querySelector( '#root' ) );
 
+'throw a SyntaxError'
+
+let name = 1;
+( { name } = { name: 3 } );
+const result = name;
