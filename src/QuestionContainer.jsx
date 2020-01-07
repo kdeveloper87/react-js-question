@@ -31,11 +31,18 @@ const QuestionContainer = ({ question, onClickReset, updateScore }) => {
     setIsSelect( true );
     if( +curQuestion.correct !== +select ) {
       setCurQuestion( (curQuestion) => {
-        const nextExample = [ ...curQuestion.example ];
-        nextExample[ select ] = {
-          ...nextExample[ select ]
-        };
-        nextExample[ select ].correct = 'wrong';
+
+
+        const nextExample = [ ...curQuestion.example ]
+          .map( (example) => {
+            if( +example.key === +select ) {
+              return {
+                ...example,
+                correct: 'wrong',
+              }
+            }
+            return example;
+          } );
 
         return {
           ...curQuestion,
@@ -48,15 +55,7 @@ const QuestionContainer = ({ question, onClickReset, updateScore }) => {
   };
 
   const onClickNext = (e) => {
-    const { dataset: { reset } } = e.target;
     const nextIndex = curIndex + 1;
-
-    // if ( reset === '돌아가기' ){
-    //
-    //   updateScore( matchCount.current / data.length * 100 );
-    //   onClickReset();
-    //   return;
-    // }
 
     if( lastIndex === nextIndex ) {
       setBtnText( '채점하기' );
