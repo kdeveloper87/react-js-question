@@ -472,61 +472,85 @@ for ( const value in array ) {
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `let first = 262;
+let second = 2009;
+
+[ first, second ] = [ second, first ];
+
+const result =;`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: '262', key: 1, correct: '' },
+            { title: 'null', key: 2, correct: '' },
+            { title: 'undefined', key: 3, correct: '' },
+            { title: '2009', key: 0, correct: 'correct' },
+            { title: 'throw a TypeError', key: 4, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const array = [ 1, 2, 3 ];
+const arrayNext = array;
+arrayNext.length = 0;
+
+const result = array[ 0 ];`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: 'undefined', key: 0, correct: 'correct' },
+            { title: '1', key: 1, correct: '' },
+            { title: 'null', key: 2, correct: '' },
+            { title: '1,2,3', key: 3, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const name = 'Brendan';
+const obj = {
+  [ name ]: name
+};
+
+const result = obj[ 'name' ];`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: 'undefined', key: 0, correct: 'correct' },
+            { title: 'throw a SyntaxError', key: 1, correct: '' },
+            { title: 'name', key: 2, correct: '' },
+            { title: 'Brendan', key: 3, correct: '' },
+            { title: 'null', key: 4, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const name = 'Javascript';
+const func = function () {
+  return this.name;
+};
+const obj = {
+  name: 'ECMAScript',
+  func: func
+};
+
+const result = obj.func();`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: 'Javascript', key: 1, correct: '' },
+            { title: 'null', key: 2, correct: '' },
+            { title: 'undefined', key: 3, correct: '' },
+            { title: 'ECMAScript', key: 0, correct: 'correct' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `let result = 2009;
+try {
+  result = 262;
+} finally {
+  result = 95;
+}`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: '95', key: 0, correct: 'correct' },
+            { title: '262', key: 1, correct: '' },
+            { title: '2009', key: 2, correct: '' },
           ],
           correct: 0
         } ]
