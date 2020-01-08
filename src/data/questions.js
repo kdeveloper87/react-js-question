@@ -195,23 +195,28 @@ const result = Object.values( o ).join( '' );`,
 ( { name } = { name: 3 } );
 const result = name;`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '1', key: 1, correct: '' },
+            { title: '3', key: 0, correct: 'correct' },
+            { title: 'undefined', key: 2, correct: '' },
+            { title: 'NaN', key: 3, correct: '' },
+            { title: 'throw a SyntaxError', key: 4, correct: '' }
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const array = [ 1, 2, 3 ];
+let result = 1;
+
+for ( const value of array ) {
+  result *= value;
+}`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '36', key: 1, correct: '' },
+            { title: 'throw a SyntaxError', key: 2, correct: '' },
+            { title: '36', key: 3, correct: '' },
+            { title: '0', key: 4, correct: '' },
+            { title: '6', key: 0, correct: 'correct' },
           ],
           correct: 0
         } ]
@@ -220,97 +225,97 @@ const result = name;`,
       name: 'Test3',
       data: [ {
         question: 'result 의 값은?',
-        code: ``,
+        code: `const result = Object.is(NaN,NaN);`,
         example: [
-          { title: '', key: 0, correct: 'correct' },
-          { title: '', key: 1, correct: '' },
-          { title: '', key: 2, correct: '' },
-          { title: '', key: 3, correct: '' },
-          { title: '', key: 4, correct: '' }
+          { title: 'false', key: 1, correct: '' },
+          { title: 'true', key: 0, correct: 'correct' },
+          { title: 'undefined', key: 2, correct: '' },
+          { title: 'throw a SyntaxError', key: 3, correct: '' },
         ],
         correct: 0
       },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `let result = 2009;
+let value = 262;
+const obj = {
+  value:95
+};
+with(obj) {
+result = value;
+}
+`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '95', key: 0, correct: 'correct' },
+            { title: '262', key: 1, correct: '' },
+            { title: '2009', key: 2, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `var value = 2009;
+delete value;
+const result = value;`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '2009', key: 0, correct: 'correct' },
+            { title: 'null', key: 1, correct: '' },
+            { title: 'undefined', key: 2, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const result = null && undefined;`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: 'undefined', key: 1, correct: '' },
+            { title: 'true', key: 2, correct: '' },
+            { title: 'null', key: 0, correct: 'correct' },
+            { title: 'false', key: 3, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const s = new Set([1,1,2,3,4,4,5,5]);
+const result = s.size;`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '7', key: 1, correct: '' },
+            { title: '8', key: 2, correct: '' },
+            { title: '4', key: 3, correct: '' },
+            { title: '5', key: 0, correct: 'correct' },
+            { title: 'undefined', key: 4, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const result = Number.MIN_VALUE > 0;`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: 'true', key: 0, correct: 'correct' },
+            { title: 'false', key: 1, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const result = 'good' > 'bad';`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: 'true', key: 0, correct: 'correct' },
+            { title: 'throw a SyntaxError', key: 1, correct: '' },
+            { title: 'false', key: 2, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const array = [ 1, 2, 3 ];
+const map = (v, i) => v * i;`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '[NaN,NaN,NaN]', key: 1, correct: '' },
+            { title: '[1, 4, 9]', key: 2, correct: '' },
+            { title: '[1, 2, 3]', key: 3, correct: '' },
+            { title: '[0, 2, 6]', key: 0, correct: 'correct' },
           ],
           correct: 0
         } ]
@@ -319,97 +324,105 @@ const result = name;`,
       name: 'Test4',
       data: [ {
         question: 'result 의 값은?',
-        code: ``,
+        code: `const result = Number( "" ) + 1;`,
         example: [
-          { title: '', key: 0, correct: 'correct' },
-          { title: '', key: 1, correct: '' },
-          { title: '', key: 2, correct: '' },
-          { title: '', key: 3, correct: '' },
-          { title: '', key: 4, correct: '' }
+          { title: '1', key: 0, correct: 'correct' },
+          { title: '0', key: 1, correct: '' },
+          { title: 'NaN', key: 2, correct: '' },
+          { title: 'undefined', key: 3, correct: '' },
         ],
         correct: 0
       },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const numbers = [ 2009 ];
+const [ first, second = 95 ] = numbers;
+
+const result = second;`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '2009', key: 1, correct: '' },
+            { title: '95', key: 0, correct: 'correct' },
+            { title: 'undefined', key: 2, correct: '' },
+            { title: 'throw a SyntaxError', key: 3, correct: '' },
+            { title: 'null', key: 4, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const value = 2009;
+const result = isFinite( value );`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: 'true', key: 0, correct: 'correct' },
+            { title: 'false', key: 1, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const func = new Function( 'a', 'b', 'return a+b;' );
+const result = func( 1, 2 );`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '3', key: 0, correct: 'correct' },
+            { title: 'undefined', key: 1, correct: '' },
+            { title: 'null', key: 2, correct: '' },
+            { title: 'throw a SyntaxError', key: 3, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const func = (obj) => {
+  obj = null;
+};
+const obj = {
+  name: 'Brendan'
+};
+func( obj );
+
+const result = obj.name;`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: 'throw a ReferenceError', key: 1, correct: '' },
+            { title: 'null', key: 2, correct: '' },
+            { title: 'Brendan', key: 0, correct: 'correct' },
+            { title: 'undefined', key: 3, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const firstArray = [ 1, 2, 3 ];
+const secondArray = [ 1, 2, 3 ];`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: 'false', key: 0, correct: 'correct' },
+            { title: 'true', key: 1, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const array = [ 1, 3, 5, 3, 10 ];
+const result = array.lastIndexOf( 3 );`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '1', key: 1, correct: '' },
+            { title: '0', key: 2, correct: '' },
+            { title: '-1', key: 3, correct: '' },
+            { title: '2', key: 4, correct: '' },
+            { title: '3', key: 0, correct: 'correct' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `function func() {
+  return;
+}
+
+const result = func();`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: 'undefined', key: 0, correct: 'correct' },
+            { title: 'throw a ReferenceError', key: 1, correct: '' },
+            { title: 'null', key: 2, correct: '' },
           ],
           correct: 0
         } ]
@@ -418,25 +431,42 @@ const result = name;`,
       name: 'Test5',
       data: [ {
         question: 'result 의 값은?',
-        code: ``,
+        code: `const value = 23.45;
+const result = value.toFixed( 1 );`,
         example: [
-          { title: '', key: 0, correct: 'correct' },
-          { title: '', key: 1, correct: '' },
-          { title: '', key: 2, correct: '' },
-          { title: '', key: 3, correct: '' },
-          { title: '', key: 4, correct: '' }
+          { title: '23.45', key: 1, correct: '' },
+          { title: '23.4', key: 0, correct: 'correct' },
+          { title: '23.5', key: 2, correct: '' },
+          { title: '23', key: 3, correct: '' },
+          { title: '24', key: 4, correct: '' },
         ],
         correct: 0
       },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `Array.prototype 에 존재하지 않는 메소드는?`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: 'call', key: 0, correct: 'correct' },
+            { title: 'slice', key: 1, correct: '' },
+            { title: 'map', key: 2, correct: '' },
+            { title: 'forEach', key: 3, correct: '' },
+            { title: 'reduce', key: 4, correct: '' },
+          ],
+          correct: 0
+        },
+        {
+          question: 'result 의 값은?',
+          code: `const array = [ 1, 2, 3 ];
+let result = 0;
+for ( const value in array ) {
+  result += +value;
+}`,
+          example: [
+            { title: '3', key: 0, correct: 'correct' },
+            { title: '6', key: 1, correct: '' },
+            { title: '0012', key: 2, correct: '' },
+            { title: '5', key: 3, correct: '' },
+            { title: '0123', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -448,7 +478,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -460,7 +490,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -472,7 +502,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -484,7 +514,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -496,19 +526,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
-          ],
-          correct: 0
-        },
-        {
-          question: 'result 의 값은?',
-          code: ``,
-          example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         } ]
@@ -523,7 +541,7 @@ const result = name;`,
           { title: '', key: 1, correct: '' },
           { title: '', key: 2, correct: '' },
           { title: '', key: 3, correct: '' },
-          { title: '', key: 4, correct: '' }
+          { title: '', key: 4, correct: '' },
         ],
         correct: 0
       },
@@ -535,7 +553,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -547,7 +565,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -559,7 +577,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -571,7 +589,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -583,7 +601,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -595,7 +613,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -607,7 +625,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         } ]
@@ -622,7 +640,7 @@ const result = name;`,
           { title: '', key: 1, correct: '' },
           { title: '', key: 2, correct: '' },
           { title: '', key: 3, correct: '' },
-          { title: '', key: 4, correct: '' }
+          { title: '', key: 4, correct: '' },
         ],
         correct: 0
       },
@@ -634,7 +652,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -646,7 +664,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -658,7 +676,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -670,7 +688,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -682,7 +700,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -694,7 +712,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -706,7 +724,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         } ]
@@ -721,7 +739,7 @@ const result = name;`,
           { title: '', key: 1, correct: '' },
           { title: '', key: 2, correct: '' },
           { title: '', key: 3, correct: '' },
-          { title: '', key: 4, correct: '' }
+          { title: '', key: 4, correct: '' },
         ],
         correct: 0
       },
@@ -733,7 +751,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -745,7 +763,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -757,7 +775,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -769,7 +787,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -781,7 +799,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -793,7 +811,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         },
@@ -805,7 +823,7 @@ const result = name;`,
             { title: '', key: 1, correct: '' },
             { title: '', key: 2, correct: '' },
             { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' }
+            { title: '', key: 4, correct: '' },
           ],
           correct: 0
         } ]
@@ -929,5 +947,3 @@ const result = "toString" in obj;`,
 };
 
 export default questions
-
-const str = 'throw a SyntaxError'
