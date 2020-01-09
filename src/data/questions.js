@@ -572,73 +572,80 @@ const result = number === 2009;`,
       },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const a = isFinite( null );
+const b = Number.isFinite( null );
+const result = a === b;
+`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: 'false', key: 0, correct: 'correct' },
+            { title: 'true', key: 1, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `let result = 0;
+for ( let i = 0; i < 5; i++ ) {
+  if ( i % 2 ){
+    result += i;
+  }
+}
+`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: '6', key: 1, correct: '' },
+            { title: '15', key: 2, correct: '' },
+            { title: '0', key: 3, correct: '' },
+            { title: '4', key: 0, correct: 'correct' },
+            { title: '5', key: 4, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `let value = 2009;
+setTimeout( () => {
+  value = 262;
+
+}, 0 );
+const result = value;`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: 'undefined', key: 1, correct: '' },
+            { title: '262', key: 2, correct: '' },
+            { title: '2009', key: 0, correct: 'correct' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const result = '1' + 1;`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: '11', key: 0, correct: 'correct' },
+            { title: '2', key: 1, correct: '' },
+            { title: 'NaN', key: 2, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const array = [1, 2, 3];
+const result = array.unshift( 0 );`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: '[0,1,2,3]', key: 1, correct: '' },
+            { title: '[1,2,3,0]', key: 2, correct: '' },
+            { title: '4', key: 0, correct: 'correct' },
+            { title: '[1,2,3]', key: 3, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const result = typeof !!null;`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: 'boolean', key: 0, correct: 'correct' },
+            { title: 'number', key: 1, correct: '' },
+            { title: 'true', key: 2, correct: '' },
+            { title: 'false', key: 3, correct: '' },
+            { title: 'undefined', key: 4, correct: '' },
           ],
           correct: 0
         },
