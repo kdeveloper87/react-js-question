@@ -559,13 +559,14 @@ try {
       name: 'Test6',
       data: [ {
         question: 'result 의 값은?',
-        code: ``,
+        code: `const SimpleNumber = function (value) {
+  return value;
+};
+const number = new SimpleNumber( 2009 );
+const result = number === 2009;`,
         example: [
-          { title: '', key: 0, correct: 'correct' },
-          { title: '', key: 1, correct: '' },
-          { title: '', key: 2, correct: '' },
-          { title: '', key: 3, correct: '' },
-          { title: '', key: 4, correct: '' },
+          { title: 'false', key: 0, correct: 'correct' },
+          { title: 'true', key: 1, correct: '' },
         ],
         correct: 0
       },
