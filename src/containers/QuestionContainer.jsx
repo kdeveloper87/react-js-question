@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react' ;
+import React, { useState, useEffect, useRef, useCallback } from 'react' ;
 import 'highlight.js/styles/atom-one-dark.css'
 import hljs from 'highlight.js/lib/highlight';
 import javascript from 'highlight.js/lib/languages/javascript';
@@ -20,7 +20,26 @@ const QuestionContainer = ({ question, onClickReset, updateScore }) => {
 
   }, [ curQuestion ] );
 
-  const onClick = (e) => {
+  const updateCurQuestion = (curQuestion, selected) => {
+
+    const [ ...example ] = [ ...curQuestion.example ]
+      .map( (example) => {
+        if( +example.key === +selected ) {
+          return {
+            ...example,
+            correct: 'wrong',
+          }
+        }
+        return example;
+      } );
+
+    return {
+      ...curQuestion,
+      example,
+    }
+  };
+
+  const onClick = useCallback( (e) => {
     const { dataset: { select } } = e.target;
 
     setIsSelected( true );
@@ -31,35 +50,18 @@ const QuestionContainer = ({ question, onClickReset, updateScore }) => {
     if( +curQuestion.correct === +select ) {
       matchCount.current = matchCount.current + 1;
     } else {
-      setCurQuestion( (curQuestion) => {
-
-        const [ ...example ] = [ ...curQuestion.example ]
-          .map( (example) => {
-            if( +example.key === +select ) {
-              return {
-                ...example,
-                correct: 'wrong',
-              }
-            }
-            return example;
-          } );
-
-        return {
-          ...curQuestion,
-          example,
-        }
-      } );
+      setCurQuestion( updateCurQuestion( curQuestion, select ) );
     }
-  };
+  }, [ isSelected ] );
 
-  const onClickNext = () => {
+  const onClickNext = useCallback( () => {
     const nextIndex = curIndex + 1;
 
     if( lastIndex === nextIndex ) {
       setBtnText( '채점하기' );
     }
 
-    if( lastIndex < curIndex + 1 ) {
+    if( lastIndex < nextIndex ) {
       if( matchCount.current === data.length ) {
         alert( `만점!!` );
       } else {
@@ -73,7 +75,7 @@ const QuestionContainer = ({ question, onClickReset, updateScore }) => {
     setIsSelected( false );
     setCurIndex( nextIndex );
     setCurQuestion( data[ nextIndex ] );
-  };
+  }, [ curIndex ] );
 
   return (
     <div className="question_container">
@@ -101,7 +103,7 @@ const Question = ({ data, onClick, isSelect, onClickNext, btnText, lastIndex, cu
           );
         } ) }
 
-          <div className="next">
+        <div className="next">
           { isSelect &&
           <button className="next-btn" onClick={ onClickNext } data-reset={ btnText }>{ btnText }</button> }
         </div>

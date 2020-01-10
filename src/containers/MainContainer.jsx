@@ -16,8 +16,8 @@ const MainContainer = () => {
   const [ level, setLevel ] = useState( '' );
   const [ order, setOrder ] = useState( null );
   const [ title, setTitle ] = useState( TITLE );
-  const scoresLocalStorage = useRef( new Store( LOCAL_STORAGE_KEY ) );
   const [ scores, setScores ] = useState( [] );
+  const scoresLocalStorage = useRef( new Store( LOCAL_STORAGE_KEY ) );
 
   const getScore = (name) => {
     return scoresLocalStorage.current.getLocalStorage( name );
