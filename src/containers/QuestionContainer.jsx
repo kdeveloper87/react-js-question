@@ -62,9 +62,9 @@ const QuestionContainer = ({ question, onClickReset, updateScore }) => {
 
     if( lastIndex < nextIndex ) {
       if( matchCount.current === data.length ) {
-        alert( `만점!!` );
+        alert( `만점!` );
       } else {
-        alert( `${ lastIndex + 1 }개 중 ${ matchCount.current }개 맞았습니다!` );
+        alert( `${ lastIndex + 1 }개 중 ${ matchCount.current }개 맞았습니다!!` );
       }
       updateScore( matchCount.current / data.length * 100 );
       onClickReset();
