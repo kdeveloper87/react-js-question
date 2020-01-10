@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react' ;
-import './css/reset.css';
-import './css/style.css';
-import questions from "./data/questions";
+import questions from "../data/questions";
 import QuestionContainer from "./QuestionContainer";
-import Store from "./Store";
+import Store from "../store/Store";
 import LevelContainer from "./LevelContainer";
 import QuestionListContainer from "./QuestionListContainer";
 
@@ -13,7 +11,7 @@ const QUESTION = 2;
 const TITLE = '자바스크립트 문제 은행';
 const LOCAL_STORAGE_KEY = 'quizScores';
 
-const Main = () => {
+const MainContainer = () => {
   const [ index, setIndex ] = useState( MAIN );
   const [ level, setLevel ] = useState( '' );
   const [ order, setOrder ] = useState( null );
@@ -120,4 +118,4 @@ const Header = ({ title, index, onClickScoreReset }) => {
   );
 };
 
-export default Main;
+export default MainContainer;

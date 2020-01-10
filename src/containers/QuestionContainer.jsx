@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react' ;
-import './css/reset.css';
-import './css/style.css';
 import 'highlight.js/styles/atom-one-dark.css'
 import hljs from 'highlight.js/lib/highlight';
 import javascript from 'highlight.js/lib/languages/javascript';
@@ -103,7 +101,7 @@ const Question = ({ data, onClick, isSelect, onClickNext, btnText, lastIndex, cu
           );
         } ) }
 
-        <div className="next">
+          <div className="next">
           { isSelect &&
           <button className="next-btn" onClick={ onClickNext } data-reset={ btnText }>{ btnText }</button> }
         </div>
