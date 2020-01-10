@@ -9,29 +9,31 @@ const QuestionContainer = ({ question, onClickReset, updateScore }) => {
   const { data = [] } = question;
   const [ curIndex, setCurIndex ] = useState( 0 );
   const [ curQuestion, setCurQuestion ] = useState( data[ curIndex ] );
-  const [ isSelect, setIsSelect ] = useState( false );
+  const [ isSelected, setIsSelected ] = useState( false );
   const [ btnText, setBtnText ] = useState( '다음문제' );
   const lastIndex = data.length - 1;
   const matchCount = useRef( 0 );
-
 
   useEffect( () => {
     hljs.registerLanguage( 'javascript', javascript );
     document.querySelectorAll( 'pre code' ).forEach( (block) => {
       hljs.highlightBlock( block );
     } );
+
   }, [ curQuestion ] );
 
   const onClick = (e) => {
     const { dataset: { select } } = e.target;
-    if( !select ) {
+
+    setIsSelected( true );
+    if( !select || isSelected ) {
       return;
     }
 
-    setIsSelect( true );
-    if( +curQuestion.correct !== +select ) {
+    if( +curQuestion.correct === +select ) {
+      matchCount.current = matchCount.current + 1;
+    } else {
       setCurQuestion( (curQuestion) => {
-
 
         const nextExample = [ ...curQuestion.example ]
           .map( (example) => {
@@ -49,12 +51,10 @@ const QuestionContainer = ({ question, onClickReset, updateScore }) => {
           example: nextExample,
         }
       } );
-    } else {
-      matchCount.current = matchCount.current + 1
     }
   };
 
-  const onClickNext = (e) => {
+  const onClickNext = () => {
     const nextIndex = curIndex + 1;
 
     if( lastIndex === nextIndex ) {
@@ -72,14 +72,14 @@ const QuestionContainer = ({ question, onClickReset, updateScore }) => {
       return;
     }
 
-    setIsSelect( false );
+    setIsSelected( false );
     setCurIndex( nextIndex );
     setCurQuestion( data[ nextIndex ] );
   };
 
   return (
     <div className="question_container">
-      <Question data={ curQuestion } onClick={ onClick } isSelect={ isSelect } onClickNext={ onClickNext }
+      <Question data={ curQuestion } onClick={ onClick } isSelect={ isSelected } onClickNext={ onClickNext }
                 btnText={ btnText } lastIndex={ lastIndex } curIndex={ curIndex }/>
     </div>
   );

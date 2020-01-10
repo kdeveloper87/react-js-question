@@ -42,16 +42,11 @@ const Main = () => {
 
   const updateScore = (score) => {
     const scores = getScore( LOCAL_STORAGE_KEY );
-    if( !scores[ level ] ) {
+    if( !scores[ level ] || order === null ) {
       scores[ level ] = [];
     }
 
     scores[ level ][ order ] = score;
-
-    if( order === null ) {
-      scores[ level ] = [];
-    }
-
     setScore( LOCAL_STORAGE_KEY, scores );
     setScores( scores[ level ] );
   };
@@ -120,7 +115,7 @@ const Header = ({ title, index, onClickScoreReset }) => {
       <h2 className="title">
         { title }
       </h2>
-      { index === QUESTION_LIST && ( <button className="btn btn-reset" onClick={ onClickScoreReset }>점수 초기화</button> ) }
+      { index === QUESTION_LIST && (<button className="btn btn-reset" onClick={ onClickScoreReset }>점수 초기화</button>) }
     </div>
   );
 };

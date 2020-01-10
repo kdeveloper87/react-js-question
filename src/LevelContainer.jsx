@@ -25,8 +25,8 @@ const QuestionCard = ({ title, contents, onClick, level }) => {
     <div className="card">
       <h3>{ title }</h3>
       <div className="main_text">
-        <p>{ contents.split( '\n' ).map( content => {
-          return ( <span>{ content }<br/></span> )
+        <p>{ contents.split( '\n' ).map( (content,index) => {
+          return ( <span key={index}>{ content }<br/></span> )
         } ) }
         </p>
       </div>
