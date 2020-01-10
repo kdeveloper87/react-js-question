@@ -35,7 +35,7 @@ const QuestionContainer = ({ question, onClickReset, updateScore }) => {
     } else {
       setCurQuestion( (curQuestion) => {
 
-        const nextExample = [ ...curQuestion.example ]
+        const [ ...example ] = [ ...curQuestion.example ]
           .map( (example) => {
             if( +example.key === +select ) {
               return {
@@ -48,7 +48,7 @@ const QuestionContainer = ({ question, onClickReset, updateScore }) => {
 
         return {
           ...curQuestion,
-          example: nextExample,
+          example,
         }
       } );
     }
