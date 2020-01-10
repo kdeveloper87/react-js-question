@@ -651,13 +651,19 @@ const result = array.unshift( 0 );`,
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const User = function (name) {
+  this.name = name;
+};
+
+const Brendan = new User( 'Brendan' );
+const James = new Brendan.constructor( 'James' );
+
+const result = James instanceof User;
+`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: 'true', key: 0, correct: 'correct' },
+            { title: 'throw a SyntaxError', key: 1, correct: '' },
+            { title: 'false', key: 2, correct: '' },
           ],
           correct: 0
         } ]
@@ -666,97 +672,107 @@ const result = array.unshift( 0 );`,
       name: 'Test7',
       data: [ {
         question: 'result 의 값은?',
-        code: ``,
+        code: `const result = true > false;`,
         example: [
-          { title: '', key: 0, correct: 'correct' },
-          { title: '', key: 1, correct: '' },
-          { title: '', key: 2, correct: '' },
-          { title: '', key: 3, correct: '' },
-          { title: '', key: 4, correct: '' },
+          { title: 'false', key: 1, correct: '' },
+          { title: 'true', key: 0, correct: 'correct' },
+          { title: 'number', key: 2, correct: '' },
+          { title: 'null', key: 3, correct: '' },
         ],
         correct: 0
       },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const result = Number.isInteger( 95.0 );`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: 'true', key: 0, correct: 'correct' },
+            { title: 'false', key: 1, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const array = [1, 2, 3, 4, 5];
+const result = array.splice( 1, 2, 3 );
+`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: '[2,3]', key: 0, correct: 'correct' },
+            { title: '[1,2,3,4,5,1,2,3]', key: 1, correct: '' },
+            { title: '[1,1,2,2,3,3]', key: 2, correct: '' },
+            { title: '[3,3,4,5]', key: 3, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const func = () => {
+};
+
+const result = func instanceof Object;
+`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: 'true', key: 0, correct: 'correct' },
+            { title: 'false', key: 1, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const { name } = {
+  name: 'Brendan'
+};
+
+const result = name;`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: 'throw a SyntaxError', key: 1, correct: '' },
+            { title: 'undefined', key: 2, correct: '' },
+            { title: 'name', key: 3, correct: '' },
+            { title: 'Brendan', key: 0, correct: 'correct' },
+            { title: 'null', key: 4, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const items = [1, 2, 3, 4];
+const noop = value => value;
+
+for ( var i = 0; i < items.length; i++ ) {
+  noop( items[ i ] );
+}
+
+const result = i;
+`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: '4', key: 0, correct: 'correct' },
+            { title: 'undefined', key: 1, correct: '' },
+            { title: '0', key: 2, correct: '' },
+            { title: 'throw a ReferenceError', key: 3, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `let value = 32;
+const reseult = value << 1;`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: '64', key: 0, correct: 'correct' },
+            { title: '-32', key: 1, correct: '' },
+            { title: '31', key: 2, correct: '' },
+            { title: '16', key: 3, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const str = 'JavaScript is not Java';
+const result = str.replace( 'Java', 'ECMA' );`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: 'ECMAScript is not Java', key: 0, correct: 'correct' },
+            { title: 'JavaScript is not ECMA', key: 1, correct: '' },
+            { title: 'ECMAScript is not ECMA', key: 2, correct: '' },
+            { title: 'JavaScript is not Java', key: 3, correct: '' },
+            { title: 'ECMA', key: 4, correct: '' },
           ],
           correct: 0
         } ]
@@ -765,97 +781,109 @@ const result = array.unshift( 0 );`,
       name: 'Test8',
       data: [ {
         question: 'result 의 값은?',
-        code: ``,
+        code: `const result = (1 && 2) || (0 && 3);`,
         example: [
-          { title: '', key: 0, correct: 'correct' },
-          { title: '', key: 1, correct: '' },
-          { title: '', key: 2, correct: '' },
-          { title: '', key: 3, correct: '' },
-          { title: '', key: 4, correct: '' },
+          { title: '2', key: 0, correct: 'correct' },
+          { title: '1', key: 1, correct: '' },
+          { title: '0', key: 2, correct: '' },
+          { title: '3', key: 3, correct: '' },
+          { title: '4', key: 4, correct: '' },
         ],
         correct: 0
       },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `var prop = 95;
+const result = window.prop;`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: 'true', key: 1, correct: '' },
+            { title: 'throw a ReferenceError', key: 2, correct: '' },
+            { title: 'undefined', key: 3, correct: '' },
+            { title: '95', key: 0, correct: 'correct' },
+            { title: 'null', key: 4, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const obj = {
+  value: 2009,
+};
+const func = function () {
+  this.value = 262;
+};
+
+func.call( obj );
+const result = obj.value;`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: '262', key: 0, correct: 'correct' },
+            { title: '2009', key: 1, correct: '' },
+            { title: 'undefined', key: 2, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `let prop = 95;
+const result = window.prop;`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: 'undefined', key: 0, correct: 'correct' },
+            { title: 'null', key: 1, correct: '' },
+            { title: 'throw a ReferenceError', key: 2, correct: '' },
+            { title: 'true', key: 3, correct: '' },
+            { title: '95', key: 4, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const array = [5, 1, 3, 4, 2];
+const result = array.some( (a, b) => b - a );`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: '[5,4,3,2,1]', key: 0, correct: 'correct' },
+            { title: '[1,2,3,4,5]', key: 1, correct: '' },
+            { title: '[5,1,3,4,2]', key: 4, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const str = "{\\"name\\":\\"Brendan\\"}";
+const json = JSON.parse( str );
+const result = json.name;
+`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: 'Brendan', key: 0, correct: 'correct' },
+            { title: 'undefined', key: 1, correct: '' },
+            { title: 'throw a ReferenceError', key: 2, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `const result = typeof Object;`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: 'function', key: 0, correct: 'correct' },
+            { title: 'Object', key: 1, correct: '' },
+            { title: 'object', key: 2, correct: '' },
+            { title: 'throw a TypeError', key: 3, correct: '' },
           ],
           correct: 0
         },
         {
           question: 'result 의 값은?',
-          code: ``,
+          code: `let result = 2009;
+try {
+  result = 262 / 0;
+} catch (e) {
+  result = 0 / 262;
+}
+`,
           example: [
-            { title: '', key: 0, correct: 'correct' },
-            { title: '', key: 1, correct: '' },
-            { title: '', key: 2, correct: '' },
-            { title: '', key: 3, correct: '' },
-            { title: '', key: 4, correct: '' },
+            { title: 'Infinity', key: 0, correct: 'correct' },
+            { title: 'throw a TypeError', key: 1, correct: '' },
+            { title: '0', key: 2, correct: '' },
+            { title: '2009', key: 3, correct: '' },
           ],
           correct: 0
         } ]

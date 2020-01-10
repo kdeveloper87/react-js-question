@@ -7,7 +7,7 @@ import App from './App' ;
 const Hot = hot( App );
 
 ReactDom.render( <Hot/>, document.querySelector( '#root' ) );
-//id 변경테스트
+
 
 
 
