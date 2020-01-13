@@ -8,7 +8,7 @@ import QuestionListContainer from "./QuestionListContainer";
 const MAIN = 0;
 const QUESTION_LIST = 1;
 const QUESTION = 2;
-const TITLE = '자바스크립트 퀴즈';
+const TITLE = '자바스크립트 퀴즈.';
 const LOCAL_STORAGE_KEY = 'quizScores';
 
 const MainContainer = () => {
