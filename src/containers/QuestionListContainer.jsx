@@ -10,7 +10,7 @@ const QuestionListContainer = ({ questionList = [], onClick, quizScores = {}, on
             <div className="item" key={ item.name }>
               <h3>{ item.name }</h3>
               <p>점수 : { quizScores[ index ] ? quizScores[ index ] : 0 }점</p>
-              <button className="btn" onClick={ onClick } data-order={ index }>시작</button>
+              <button className="btn" onClick={ onClick } data-order={ index }>시 작</button>
             </div>
           );
         } ) }
