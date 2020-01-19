@@ -3,7 +3,7 @@ import './css/reset.css';
 import './css/style.css'
 import MainContainer from "./containers/MainContainer";
 import { createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import rootReducer from './reducers';
 import { Provider } from 'react-redux';
 
