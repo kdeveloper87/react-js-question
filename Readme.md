@@ -4,7 +4,7 @@
 
 사용기술
 
-* react.js , redux,immer(적용중)
+* react.js , redux
 
 
 자바스크립트 코드를 보고
