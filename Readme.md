@@ -4,7 +4,7 @@
 
 사용기술
 
-* react.js
+* react.js , redux(적용중)
 
 
 자바스크립트 코드를 보고
