@@ -49,6 +49,18 @@ const config = {
     // publicPath: 'dist/',
   },
 
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
+  },
+
 };
 
 module.exports = (env, { mode }) => {

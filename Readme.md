@@ -1,10 +1,12 @@
 # 자바스크립트 문제 모음
 
-[:question:퀴즈 맞추러 가기!](https://kdeveloper87.github.io/react-js-question/)
+[![HitCount](http://hits.dwyl.io/JunH-K/react-js-question.svg)](http://hits.dwyl.io/JunH-K/react-js-question)
+
+[:question:퀴즈 맞추러 가기!](https://junh-k.github.io/react-js-question/)
 
 사용기술
 
-* react.js
+* react.js , redux
 
 
 자바스크립트 코드를 보고

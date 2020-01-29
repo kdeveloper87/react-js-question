@@ -4,19 +4,20 @@ import QuestionContainer from "./QuestionContainer";
 import Store from "../store/Store";
 import LevelContainer from "./LevelContainer";
 import QuestionListContainer from "./QuestionListContainer";
-
-const MAIN = 0;
-const QUESTION_LIST = 1;
-const QUESTION = 2;
-const TITLE = '자바스크립트 퀴즈.';
-const LOCAL_STORAGE_KEY = 'quizScores';
+import { useDispatch, useSelector } from "react-redux";
+import {
+  HEADER_TITLE, MAIN, QUESTION,
+  QUESTION_LIST,
+  LOCAL_STORAGE_KEY,
+  displayIndexAction,
+  testLevelAction,
+  testOrderAction,
+  titleActon, scoresAction
+} from "../reducers/main";
 
 const MainContainer = () => {
-  const [ index, setIndex ] = useState( MAIN );
-  const [ level, setLevel ] = useState( '' );
-  const [ order, setOrder ] = useState( null );
-  const [ title, setTitle ] = useState( TITLE );
-  const [ scores, setScores ] = useState( [] );
+  const dispatch = useDispatch();
+  const { index, testOrder, level, title, scores } = useSelector( state => state.main, [] );
   const scoresLocalStorage = useRef( new Store( LOCAL_STORAGE_KEY ) );
 
   const getScore = (name) => {
@@ -30,47 +31,47 @@ const MainContainer = () => {
   useEffect( () => {
     const scores = getScore( LOCAL_STORAGE_KEY );
 
-    if( level && !scores[ level ] ) {
+    if ( level && !scores[ level ] ){
       scores[ level ] = [];
       setScore( LOCAL_STORAGE_KEY, scores );
     }
 
-    setScores( scores[ level ] );
-  }, [ level ] );
+    dispatch( scoresAction( { scores: scores[ level ] } ) );
+  }, [level] );
 
   const updateScore = (score) => {
     const scores = getScore( LOCAL_STORAGE_KEY );
-    if( !scores[ level ] || order === null ) {
+    if ( !scores[ level ] || testOrder === null ){
       scores[ level ] = [];
     }
 
-    scores[ level ][ order ] = score;
+    scores[ level ][ testOrder ] = score;
     setScore( LOCAL_STORAGE_KEY, scores );
-    setScores( scores[ level ] );
+    dispatch( scoresAction( { scores: scores[ level ] } ) );
   };
 
   const onClickStart = (e) => {
     const { dataset: { level } } = e.target;
-    setIndex( QUESTION_LIST );
-    setLevel( level );
+    dispatch( displayIndexAction( { index: QUESTION_LIST } ) );
+    dispatch( testLevelAction( { level } ) );
   };
 
   const onClickLevelTestStart = (e) => {
     const { dataset: { order } } = e.target;
-    setIndex( QUESTION );
-    setOrder( order );
-    setTitle( questions[ level ][ order ].name );
+    dispatch( displayIndexAction( { index: QUESTION } ) );
+    dispatch( testOrderAction( { testOrder: order } ) );
+    dispatch( titleActon( { title: questions[ level ][ order ].name } ) );
   };
 
   const onClickReset = () => {
-    setIndex( QUESTION_LIST );
-    setLevel( level );
-    setTitle( TITLE );
-    setOrder( null );
+    dispatch( displayIndexAction( { index: QUESTION_LIST } ) );
+    dispatch( testLevelAction( { level } ) );
+    dispatch( titleActon( { title: HEADER_TITLE } ) );
+    dispatch( testOrderAction( { testOrder: null } ) );
   };
 
   const onClickMain = () => {
-    setIndex( MAIN );
+    dispatch( displayIndexAction( { index: MAIN } ) );
   };
 
   const onClickScoreReset = () => {
@@ -84,7 +85,7 @@ const MainContainer = () => {
         <LevelContainer onClick={ onClickStart }/>
         <QuestionListContainer questionList={ questions[ level ] } onClick={ onClickLevelTestStart }
                                quizScores={ scores } onClickMain={ onClickMain }/>
-        <QuestionContainer question={ questions[ level ] && questions[ level ][ order ] }
+        <QuestionContainer question={ questions[ level ] && questions[ level ][ testOrder ] }
                            onClickReset={ onClickReset } updateScore={ updateScore }/>
       </Contents>
     </Container>
@@ -101,7 +102,7 @@ const Container = ({ children }) => {
 
 const Contents = ({ index, children }) => {
   return React.Children.map( children, (child, childIndex) => {
-    if( index === childIndex ) {
+    if ( index === childIndex ){
       return child;
     }
   } );
