@@ -40,6 +40,7 @@ const config = {
     new webpack.LoaderOptionsPlugin({ debug: true }),
     new HtmlWebpackPlugin({
       template: 'public/index.html',
+      favicon: 'public/favicon/favicon.ico'
     }),
   ],
 
