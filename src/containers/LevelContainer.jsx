@@ -41,8 +41,8 @@ const LEVEL = {
 };
 
 const titleLevel1 = '기초문제';
-const titleLevel2 = '기초입니다!. \n 문제를 보고 맞는 답을 골라주세요.';
-const contentsLevel1 = '중급문제';
+const titleLevel2 = '중급문제';
+const contentsLevel1 = '기초입니다!. \n 문제를 보고 맞는 답을 골라주세요.';
 const contentsLevel2 = '조금 어려운 중급문제입니다. \n 문제를 보고 맞는 답을 골라주세요.';
 
 export default LevelContainer;
