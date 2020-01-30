@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode=production",
-    "dev": "webpack-dev-server --open --progress --hot"
+    "dev": "webpack-dev-server --open --progress --hot",
+    "deploy": "npm run build&&gh-pages -d dist"
   },
   "author": "",
   "license": "MIT",
@@ -25,12 +26,16 @@
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
     "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.3.2",
+    "gh-pages": "^2.2.0",
+    "highlight.js": "^9.17.1",
+    "html-webpack-plugin": "^3.2.0",
     "react-hot-loader": "^4.12.18",
+    "style-loader": "^1.0.1",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.1",
-    "css-loader": "^3.3.2",
-    "style-loader": "^1.0.1",
-    "highlight.js": "^9.17.1"
-  }
+    "webpack-dev-server": "^3.10.1"
+  },
+  "homepage": "https://junh-k.github.io/react-js-question"
 }

@@ -1,7 +1,7 @@
 const MAIN = 0;
 const QUESTION_LIST = 1;
 const QUESTION = 2;
-const HEADER_TITLE = '자바스크립트 퀴즈.';
+const HEADER_TITLE = '자바스크립트 퀴즈';
 const LOCAL_STORAGE_KEY = 'quizScores';
 
 const initialState = {
