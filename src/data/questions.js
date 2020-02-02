@@ -1,7 +1,7 @@
 const questions = {
-  intermediate: [ {
+  intermediate: [{
     name: 'Test1',
-    data: [ {
+    data: [{
       question: 'result 의 값은?',
       code: `let result = 2009;
 const func = (x = 262) => {
@@ -104,11 +104,11 @@ const result = typeof User;`,
           { title: 'function', key: 0, correct: 'correct' },
         ],
         correct: 0
-      } ]
+      }]
   },
     {
       name: 'Test2',
-      data: [ {
+      data: [{
         question: 'result 의 값은?',
         code: `const map = v => v * v;
 const array = Array.from( [ 1, 2, 3 ], map );`,
@@ -219,11 +219,11 @@ for ( const value of array ) {
             { title: '6', key: 0, correct: 'correct' },
           ],
           correct: 0
-        } ]
+        }]
     },
     {
       name: 'Test3',
-      data: [ {
+      data: [{
         question: 'result 의 값은?',
         code: `const result = Object.is(NaN,NaN);`,
         example: [
@@ -318,11 +318,11 @@ const map = (v, i) => v * i;`,
             { title: '[0, 2, 6]', key: 0, correct: 'correct' },
           ],
           correct: 0
-        } ]
+        }]
     },
     {
       name: 'Test4',
-      data: [ {
+      data: [{
         question: 'result 의 값은?',
         code: `const result = Number( "" ) + 1;`,
         example: [
@@ -425,11 +425,11 @@ const result = func();`,
             { title: 'null', key: 2, correct: '' },
           ],
           correct: 0
-        } ]
+        }]
     },
     {
       name: 'Test5',
-      data: [ {
+      data: [{
         question: 'result 의 값은?',
         code: `const value = 23.45;
 const result = value.toFixed( 1 );`,
@@ -553,11 +553,11 @@ try {
             { title: '2009', key: 2, correct: '' },
           ],
           correct: 0
-        } ]
+        }]
     },
     {
       name: 'Test6',
-      data: [ {
+      data: [{
         question: 'result 의 값은?',
         code: `const SimpleNumber = function (value) {
   return value;
@@ -666,11 +666,11 @@ const result = James instanceof User;
             { title: 'false', key: 2, correct: '' },
           ],
           correct: 0
-        } ]
+        }]
     },
     {
       name: 'Test7',
-      data: [ {
+      data: [{
         question: 'result 의 값은?',
         code: `const result = true > false;`,
         example: [
@@ -775,11 +775,11 @@ const result = str.replace( 'Java', 'ECMA' );`,
             { title: 'ECMA', key: 4, correct: '' },
           ],
           correct: 0
-        } ]
+        }]
     },
     {
       name: 'Test8',
-      data: [ {
+      data: [{
         question: 'result 의 값은?',
         code: `const result = (1 && 2) || (0 && 3);`,
         example: [
@@ -886,10 +886,10 @@ try {
             { title: '2009', key: 3, correct: '' },
           ],
           correct: 0
-        } ]
+        }]
     }
   ],
-  advanced: [ {
+  advanced: [{
     name: 'Test1',
     data: [
       {
@@ -1003,7 +1003,116 @@ const result = "toString" in obj;`,
         correct: 0
       },
     ]
-  }, ],
+  }, {
+    name: 'Test2',
+    data: [
+      {
+        question: 'result 의 값은?',
+        code: `const params = [1, 2, 3, 4, 5];
+const result = Math.max.apply(10,params);`,
+        example: [
+          { title: '5', key: 0, correct: 'correct' },
+          { title: 'throw a SyntaxError', key: 1, correct: '' },
+          { title: 'undefined', key: 2, correct: '' },
+          { title: '10', key: 3, correct: '' },
+          { title: '6', key: 4, correct: '' }
+        ],
+        correct: 0
+      },
+      {
+        question: 'result 의 값은?',
+        code: `function func(a, b) {
+  "use strict";
+  a = 262;
+  b = 95;
+  const result = arguments[ 1 ];
 };
+
+func( 95, 262 );`,
+        example: [
+          { title: 'undefined', key: 1, correct: '' },
+          { title: 'throw a SyntaxError', key: 2, correct: '' },
+          { title: '1', key: 3, correct: '' },
+          { title: '262', key: 0, correct: 'correct' },
+          { title: '95', key: 4, correct: '' }
+        ],
+        correct: 0
+      },
+/*      {
+        question: 'result 의 값은?',
+        code: ``,
+        example: [
+          { title: '', key: 0, correct: 'correct' },
+          { title: '', key: 1, correct: '' },
+          { title: '', key: 2, correct: '' },
+          { title: '', key: 3, correct: '' },
+          { title: '', key: 4, correct: '' }
+        ],
+        correct: 0
+      },
+      {
+        question: 'result 의 값은?',
+        code: ``,
+        example: [
+          { title: '', key: 0, correct: 'correct' },
+          { title: '', key: 1, correct: '' },
+          { title: '', key: 2, correct: '' },
+          { title: '', key: 3, correct: '' },
+          { title: '', key: 4, correct: '' }
+        ],
+        correct: 0
+      },
+      {
+        question: 'result 의 값은?',
+        code: ``,
+        example: [
+          { title: '', key: 0, correct: 'correct' },
+          { title: '', key: 1, correct: '' },
+          { title: '', key: 2, correct: '' },
+          { title: '', key: 3, correct: '' },
+          { title: '', key: 4, correct: '' }
+        ],
+        correct: 0
+      },
+      {
+        question: 'result 의 값은?',
+        code: ``,
+        example: [
+          { title: '', key: 0, correct: 'correct' },
+          { title: '', key: 1, correct: '' },
+          { title: '', key: 2, correct: '' },
+          { title: '', key: 3, correct: '' },
+          { title: '', key: 4, correct: '' }
+        ],
+        correct: 0
+      },
+      {
+        question: 'result 의 값은?',
+        code: ``,
+        example: [
+          { title: '', key: 0, correct: 'correct' },
+          { title: '', key: 1, correct: '' },
+          { title: '', key: 2, correct: '' },
+          { title: '', key: 3, correct: '' },
+          { title: '', key: 4, correct: '' }
+        ],
+        correct: 0
+      },
+      {
+        question: 'result 의 값은?',
+        code: ``,
+        example: [
+          { title: '', key: 0, correct: 'correct' },
+          { title: '', key: 1, correct: '' },
+          { title: '', key: 2, correct: '' },
+          { title: '', key: 3, correct: '' },
+          { title: '', key: 4, correct: '' }
+        ],
+        correct: 0
+      }*/
+    ]
+  }],
+};
+
 
 export default questions
