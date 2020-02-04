@@ -1038,15 +1038,34 @@ func( 95, 262 );`,
         ],
         correct: 0
       },
-/*      {
+      {
         question: 'result 의 값은?',
-        code: ``,
+        code: `let value = 10;
+const promise = new Promise( (resolve) => {
+  value = 20;
+  resolve( 30 );
+} );
+const result = value;
+`,
         example: [
-          { title: '', key: 0, correct: 'correct' },
-          { title: '', key: 1, correct: '' },
-          { title: '', key: 2, correct: '' },
-          { title: '', key: 3, correct: '' },
-          { title: '', key: 4, correct: '' }
+          { title: '30', key: 1, correct: '' },
+          { title: 'undefined', key: 2, correct: '' },
+          { title: '10', key: 3, correct: '' },
+          { title: '0', key: 4, correct: '' },
+          { title: '20', key: 0, correct: 'correct' },
+        ],
+        correct: 0
+      },
+      {
+        question: 'result 의 값은?',
+        code: `const object = new Object();
+const proto = Object.getPrototypeOf( object );
+
+const result = proto instanceof Object;`,
+        example: [
+          { title: 'false', key: 0, correct: 'correct' },
+          { title: 'true', key: 1, correct: '' },
+          { title: 'undefined', key: 2, correct: '' },
         ],
         correct: 0
       },
@@ -1097,22 +1116,15 @@ func( 95, 262 );`,
           { title: '', key: 4, correct: '' }
         ],
         correct: 0
-      },
-      {
-        question: 'result 의 값은?',
-        code: ``,
-        example: [
-          { title: '', key: 0, correct: 'correct' },
-          { title: '', key: 1, correct: '' },
-          { title: '', key: 2, correct: '' },
-          { title: '', key: 3, correct: '' },
-          { title: '', key: 4, correct: '' }
-        ],
-        correct: 0
-      }*/
+      }
     ]
   }],
 };
+
+const object = new Object();
+const proto = Object.getPrototypeOf( object );
+
+const result = proto instanceof Object;
 
 
 export default questions
