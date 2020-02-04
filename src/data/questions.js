@@ -1069,7 +1069,7 @@ const result = proto instanceof Object;`,
         ],
         correct: 0
       },
-      {
+      /*{
         question: 'result 의 값은?',
         code: ``,
         example: [
@@ -1116,15 +1116,9 @@ const result = proto instanceof Object;`,
           { title: '', key: 4, correct: '' }
         ],
         correct: 0
-      }
+      }*/
     ]
   }],
 };
-
-const object = new Object();
-const proto = Object.getPrototypeOf( object );
-
-const result = proto instanceof Object;
-
 
 export default questions
