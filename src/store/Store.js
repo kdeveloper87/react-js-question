@@ -1,16 +1,16 @@
 export default class Store{
   constructor(name, callback) {
-    this.localStorage = window.localStorage;
-    this.getLocalStorage( name ) || this.setLocalStorage( name, {} );
+    // this.localStorage = window.localStorage;
+    Store.getLocalStorage( name ) || Store.setLocalStorage( name, {} );
 
     callback && callback();
   }
 
-  getLocalStorage(name) {
-    return JSON.parse( this.localStorage.getItem( name ) )
+  static getLocalStorage(name) {
+    return JSON.parse( window.localStorage.getItem( name ) )
   }
 
-  setLocalStorage(name, item) {
-    this.localStorage.setItem( name, JSON.stringify( item ) );
+  static setLocalStorage(name, item) {
+    window.localStorage.setItem( name, JSON.stringify( item ) );
   }
 };
