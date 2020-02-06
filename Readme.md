@@ -1,8 +1,8 @@
 # 자바스크립트 문제 모음
 
 # Demo
-현재 github-page update 가 되지않아
-데모가 불가능합니다.
+
+[:question:퀴즈 맞추러 가기!](https://junh-k.github.io/react-js-question/)
 
 사용기술
 
