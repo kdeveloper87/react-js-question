@@ -14,6 +14,8 @@ const MainContainer = ({ history }) => {
   const { level } = useSelector(state => state.main, []);
 
   useEffect(() => {
+    debugger
+    Store.setLocalStorage(LOCAL_STORAGE_KEY,{});
     const scores = Store.getLocalStorage(LOCAL_STORAGE_KEY);
     dispatch(scoresAction({ scores }));
   }, [level]);
