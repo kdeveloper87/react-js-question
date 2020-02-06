@@ -1,7 +1,8 @@
 # 자바스크립트 문제 모음
 
 # Demo
-현재 gh-page update 오류로 Demo 불가능합니다.
+현재 github-page update 가 되지않아
+데모가 불가능합니다.
 
 사용기술
 
