@@ -86,16 +86,15 @@ const QuestionContainer = ({ match, history }) => {
     setCurQuestion(data[nextIndex]);
   }, [curIndex]);
 
-  const updateScore = score => {
+  const updateScore = useCallback(score => {
     let nextScores = { ...scores };
-
     if (!scores[level] || index === null) {
       nextScores[level] = [];
     }
     nextScores[level][index] = score;
     dispatch(scoresAction({ scores: nextScores }));
     history.push(`/level/${level}`);
-  };
+  },[scores]);
 
   return (
     <div className="question_container">
