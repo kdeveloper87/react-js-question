@@ -9,9 +9,11 @@ const MainContainer = ({ history }) => {
   const { level } = useSelector( state => state.main, [] );
 
   useEffect( () => {
-    const scores = Store.getLocalStorage( LOCAL_STORAGE_KEY );
-    if ( !Object.keys( scores ).length ){
+    let scores = Store.getLocalStorage( LOCAL_STORAGE_KEY );
+
+    if ( !scores || !Object.keys( scores ).length ){
       Store.setLocalStorage( LOCAL_STORAGE_KEY, {} );
+      scores = {};
     }
     dispatch( scoresAction( { scores } ) );
   }, [level] );
