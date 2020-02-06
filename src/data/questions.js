@@ -392,7 +392,8 @@ const result = obj.name;`,
         {
           question: 'result 의 값은?',
           code: `const firstArray = [ 1, 2, 3 ];
-const secondArray = [ 1, 2, 3 ];`,
+const secondArray = [ 1, 2, 3 ];
+const result = firstArray === secondArray`,
           example: [
             { title: 'false', key: 0, correct: 'correct' },
             { title: 'true', key: 1, correct: '' },
