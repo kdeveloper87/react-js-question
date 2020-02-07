@@ -1,6 +1,8 @@
 # 자바스크립트 문제 모음
 
-# Demo
+[![HitCount](http://hits.dwyl.io/JunH-K/react-js-question.svg)](http://hits.dwyl.io/JunH-K/react-js-question)
+
+## Demo
 
 [:question:퀴즈 맞추러 가기!](https://junh-k.github.io/react-js-question/)
 
