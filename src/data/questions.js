@@ -1145,9 +1145,46 @@ const result = push.apply(first, second);`,
       },
     ],
   },
-  /*{
+  {
     name: 'Test3',
     data: [
+      {
+        question: 'result 의 값은?',
+        code: `const variable = null;
+const result = typeof variable;
+`,
+        example: [
+          { title: 'object', key: 0, correct: 'correct' },
+          { title: '0', key: 1, correct: '' },
+          { title: 'null', key: 2, correct: '' },
+          { title: 'throw a TypeError', key: 3, correct: '' },
+          { title: 'undefined', key: 4, correct: '' },
+        ],
+        correct: 0,
+      },
+      {
+        question: 'result 의 값은?',
+        code: `const result = true * 10 - true;
+`,
+        example: [
+          { title: '9', key: 0, correct: 'correct' },
+          { title: '0', key: 1, correct: '' },
+          { title: 'NaN', key: 2, correct: '' },
+        ],
+        correct: 0,
+      },
+      /*{
+        question: 'result 의 값은?',
+        code: ``,
+        example: [
+          { title: '', key: 0, correct: 'correct' },
+          { title: '', key: 1, correct: '' },
+          { title: '', key: 2, correct: '' },
+          { title: '', key: 3, correct: '' },
+          { title: '', key: 4, correct: '' },
+        ],
+        correct: 0,
+      },
       {
         question: 'result 의 값은?',
         code: ``,
@@ -1160,8 +1197,56 @@ const result = push.apply(first, second);`,
         ],
         correct: 0,
       },
+      {
+        question: 'result 의 값은?',
+        code: ``,
+        example: [
+          { title: '', key: 0, correct: 'correct' },
+          { title: '', key: 1, correct: '' },
+          { title: '', key: 2, correct: '' },
+          { title: '', key: 3, correct: '' },
+          { title: '', key: 4, correct: '' },
+        ],
+        correct: 0,
+      },
+      {
+        question: 'result 의 값은?',
+        code: ``,
+        example: [
+          { title: '', key: 0, correct: 'correct' },
+          { title: '', key: 1, correct: '' },
+          { title: '', key: 2, correct: '' },
+          { title: '', key: 3, correct: '' },
+          { title: '', key: 4, correct: '' },
+        ],
+        correct: 0,
+      },
+      {
+        question: 'result 의 값은?',
+        code: ``,
+        example: [
+          { title: '', key: 0, correct: 'correct' },
+          { title: '', key: 1, correct: '' },
+          { title: '', key: 2, correct: '' },
+          { title: '', key: 3, correct: '' },
+          { title: '', key: 4, correct: '' },
+        ],
+        correct: 0,
+      },
+      {
+        question: 'result 의 값은?',
+        code: ``,
+        example: [
+          { title: '', key: 0, correct: 'correct' },
+          { title: '', key: 1, correct: '' },
+          { title: '', key: 2, correct: '' },
+          { title: '', key: 3, correct: '' },
+          { title: '', key: 4, correct: '' },
+        ],
+        correct: 0,
+      },*/
     ],
-  },*/
+  },
 ];
 
 const questions = {
