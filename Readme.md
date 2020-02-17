@@ -13,6 +13,6 @@
 * 난이도 별 문제 출제
 
 2. 기술스택
-* react.js , redux
+* react.js , redux, router
 
 
