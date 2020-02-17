@@ -337,6 +337,6 @@ const result = typeof variable;
     },*/
   ],
 };
-const advanced = [{ ...Test1 }, { ...Test2 }, { ...Test3 }];
+const advanced = [{ ...Test1 }, { ...Test2 }];
 
 export default advanced;
