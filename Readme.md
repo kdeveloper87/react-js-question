@@ -1,6 +1,6 @@
 # 자바스크립트 문제 모음
 
-[![HitCount](http://hits.dwyl.io/JunH-K/react-js-question.svg)](http://hits.dwyl.io/JunH-K/react-js-question)
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FJunH-K%2Freact-js-question)](https://hits.seeyoufarm.com)
 
 ## Demo
 
